@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FilmController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FilmController::class, 'index'])->name('welcome');
 
 Auth::routes();
 
@@ -24,3 +23,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('Film', FilmController::class);

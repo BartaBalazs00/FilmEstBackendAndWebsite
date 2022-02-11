@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Film extends Model
 {
     use HasFactory;
-    protected $fillable = ["Cim", "leiras", "MegjelenesiEv", "Ertekeles", "imageUrl", "Kategoria", "szineszNev", "rendezoNev"];
+
+    protected $table = "filmek";
+    protected $fillable = ['Cim', 'leiras', 'megjelenesiEv', 'Ertekeles', 'imageUrl'];
 
     protected $visible = [
-        "Cim",
-        "leiras",
-        "MegjelenesiEv",
-        "Ertekeles",
-        "imageUrl",
-        "Kategoria",
-        "szineszNev",
-        "rendezoNev"
+        'FilmID',
+        'Cim',
+        'leiras',
+        'megjelenesiEv',
+        'Ertekeles',
+        'imageUrl'
     ];
 }

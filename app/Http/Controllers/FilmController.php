@@ -4,24 +4,87 @@ namespace App\Http\Controllers;
 
 use App\Models\Film;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use function GuzzleHttp\Promise\all;
 
 class FilmController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $filmek = Film::table('filmek')
-            ->join('filmkategoria', "filmkategoriai.filmId", "=", "filmek.FilmID")
-            ->join('kategoriak ', "kategoriak.KategoriaID", "=", "filmkategoriai.kategoriaId")
-            ->join('filmrendezoi ', "filmrendezoi.filmId ", "=", "filmek.FilmID")
-            ->join('rendezok ', "rendezok.rendezoId", "=", "filmrendezoi.rendezoId")
-            ->join('filmszineszei ', "filmszineszei.filmId ", "=", "filmek.FilmID")
-            ->join('szineszek ', "szineszek.szineszId", "=", "filmszineszei.szineszId")
-            ->select("Cim", "leiras", "MegjelenesiEv", "Ertekeles", "imageUrl", "Kategoria", "szineszNev", "rendezoNev")
-            ->take(10)
-            ->get();
-        //
-        return view('welcome', ['filmek'=> $filmek]);
+       // $filmek = DB::table('filmek')->Select('*')->get();
+        $filmek = Film::all();
+        return view('welcome', ['filmek' => $filmek]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Film  $film
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Film $film)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Film  $film
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Film $film)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Film  $film
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Film $film)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Film  $film
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Film $film)
+    {
+        //
+    }
 }

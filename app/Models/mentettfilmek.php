@@ -9,5 +9,10 @@ class mentettfilmek extends Model
 {
     use HasFactory;
 
-    
+    protected $fillable = ['userId',"filmId"];
+
+    protected $visible = [
+        'userId',
+        'filmId'
+    ];
 }

@@ -9,6 +9,7 @@ class Film extends Model
 {
     use HasFactory;
 
+    protected $table="filmek";
     protected $fillable = ['cim', 'leiras', 'megjelenesiEv', 'ertekeles', 'imageUrl'];
 
     protected $visible = [

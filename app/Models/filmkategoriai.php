@@ -9,7 +9,7 @@ class filmkategoriai extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['filmId',"kategoriaId"];
+    protected $table="filmkategoriai";
 
     protected $visible = [
         'filmID',

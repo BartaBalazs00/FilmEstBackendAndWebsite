@@ -9,7 +9,7 @@ class filmrendezoi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['filmId',"rendezoId"];
+    protected $table="filmrendezoi";
 
     protected $visible = [
         'filmID',

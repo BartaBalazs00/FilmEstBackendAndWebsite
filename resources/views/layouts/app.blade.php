@@ -68,6 +68,22 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+
+
+                                    <a class="dropdown-item" href="{{ route('home') }}">Home</a>
+                                    </a>
+
+                                    <form id="home-form" action="{{ route('home') }}" method="GET" class="d-none">
+                                        @csrf
+                                    </form>
+
+
+                                    <a class="dropdown-item" href="{{ route('welcome') }}">Welcome</a>
+                                    </a>
+
+                                    <form id="welcome-form" action="{{ route('welcome') }}" method="GET" class="d-none">
+                                        @csrf
+                                    </form>
                                 </div>
                             </li>
                         @endguest

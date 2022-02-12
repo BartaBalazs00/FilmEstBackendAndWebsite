@@ -9,7 +9,7 @@ class mentettfilmek extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['userId',"filmId"];
+    protected $table="mentettfilmek";
 
     protected $visible = [
         'userId',

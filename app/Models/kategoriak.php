@@ -9,7 +9,8 @@ class kategoriak extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id',"kategoria"];
+    protected $table="kategoriak";
+    protected $fillable = ["kategoria"];
 
     protected $visible = [
         'id',

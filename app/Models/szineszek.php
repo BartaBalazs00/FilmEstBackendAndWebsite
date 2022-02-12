@@ -9,7 +9,8 @@ class szineszek extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id',"szineszNev"];
+    protected $table="szineszek";
+    protected $fillable = ["szineszNev"];
 
     protected $visible = [
         'id',

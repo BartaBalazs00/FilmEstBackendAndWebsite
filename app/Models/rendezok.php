@@ -9,7 +9,8 @@ class rendezok extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id',"rendezoNev"];
+    protected $table="rendezok";
+    protected $fillable = ["rendezoNev"];
 
     protected $visible = [
         'id',

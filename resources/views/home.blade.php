@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
-            <img src="/img/FilmEst.jpg" class="rounded-circle p-5 h-50">
+            <img src="/img/FilmEst.jpg" class="rounded-circle pt-5 h-50">
         </div>
             <div class="col-lg-9 pt-5">
                 <div><h1>Film Est</h1></div>

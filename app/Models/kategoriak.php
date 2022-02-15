@@ -16,4 +16,9 @@ class kategoriak extends Model
         'id',
         'kategoria'
     ];
+
+    public function filmek()
+    {
+        return $this->belongsToMany(Film::class, "filmszineszei", "kategoriaId", "filmId");
+    }
 }

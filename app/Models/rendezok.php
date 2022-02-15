@@ -16,4 +16,9 @@ class rendezok extends Model
         'id',
         'rendezoNev'
     ];
+
+    public function filmek()
+    {
+        return $this->belongsToMany(Film::class, "filmrendezoi", "rendezoId", "filmId");
+    }
 }

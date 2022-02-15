@@ -15,4 +15,5 @@ class mentettfilmek extends Model
         'userId',
         'filmId'
     ];
+
 }

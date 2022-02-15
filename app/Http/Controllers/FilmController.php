@@ -19,19 +19,7 @@ class FilmController extends Controller
     public function index()
     {
        // $filmek = DB::table('filmek')->Select('*')->get();
-        $filmek = Film::select('filmek.cim as cim', 'filmek.leiras as leiras', 
-                       'filmek.megjelenesiEv as megjelenesiEv', 'filmek.ertekeles as ertekeles',
-                       'filmek.imageUrl as imageUrl', 'rendezok.rendezoNev as rendezoNev')
-                        ->selectRaw("group_concat(distinct(kategoriak.kategoria)) as kategoriak")
-                        ->selectRaw("group_concat(szineszek.szineszNev) as szineszek")
-                        ->join("filmkategoriai", "filmkategoriai.filmId", "=", "filmek.id")
-                        ->join("kategoriak", "kategoriak.id", "=", "filmkategoriai.kategoriaId")
-                        ->join("filmrendezoi", "filmrendezoi.filmId", "=", "filmek.id")
-                        ->join("rendezok", "rendezok.id", "=", "filmrendezoi.rendezoId")
-                        ->join("filmszineszei", "filmszineszei.filmId", "=", "filmek.id")
-                        ->join("szineszek", "szineszek.id", "=", "filmszineszei.szineszId")
-                        ->groupBy("filmek.id")
-                        ->get();
+        $filmek = Film::all();
         return view('welcome', ['filmek' => $filmek]);
     }
 

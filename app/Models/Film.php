@@ -20,4 +20,17 @@ class Film extends Model
         'ertekeles',
         'imageUrl'
     ];
+
+    public function kategoriak()
+    {
+        return $this->belongsToMany(kategoriak::class, "filmkategoriai", "filmId", "kategoriaId");
+    }
+    public function rendezok()
+    {
+        return $this->belongsToMany(rendezok::class, "filmrendezoi", "filmId", "rendezoId");
+    }
+    public function szineszek()
+    {
+        return $this->belongsToMany(szineszek::class, "filmszineszei", "filmId", "szineszId");
+    }
 }

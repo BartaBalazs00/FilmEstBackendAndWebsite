@@ -16,4 +16,8 @@ class szineszek extends Model
         'id',
         'szineszNev'
     ];
+    public function filmek()
+    {
+        return $this->belongsToMany(Film::class, "filmszineszei", "szineszId", "filmId");
+    }
 }

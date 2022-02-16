@@ -20,7 +20,22 @@ class FilmController extends Controller
     public function index()
     {
        // $filmek = DB::table('filmek')->Select('*')->get();
-        $filmek = Film::all();
+        $filmek = [];
+        foreach (Film::all() as $film) {
+            $filmek[] = [
+            'id' => $film->id,
+            'cim' => $film->cim,
+            'leiras'=> $film->leiras,
+            'megjelenesiEv'=> $film->megjelenesiEv,
+            'ertekeles'=> $film->ertekeles,
+            'kategoriak' => $film->kategoriak,
+            'szineszek' =>$film->szineszek,
+            'rendezoNev' =>$film->rendezok
+            ];
+        }
+        //dd($filmek[2]);
+        //return $filmek;
+        //$filmek = Film::all();
         return response()->json($filmek);
     }
 

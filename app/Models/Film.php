@@ -33,4 +33,8 @@ class Film extends Model
     {
         return $this->belongsToMany(szineszek::class, "filmszineszei", "filmId", "szineszId");
     }
+    public function user()
+    {
+        return $this->belongsToMany(User::class, "mentettfilmek", "filmId", "userId");
+    }
 }

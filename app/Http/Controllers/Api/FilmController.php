@@ -19,9 +19,8 @@ class FilmController extends Controller
      */
     public function index()
     {
-       // $filmek = DB::table('filmek')->Select('*')->get();
-        $filmek = [];
-        foreach (Film::all() as $film) {
+        $filmek = Film::all();
+        /* foreach (Film::all() as $film) {
             $filmek[] = [
             'id' => $film->id,
             'cim' => $film->cim,
@@ -32,10 +31,7 @@ class FilmController extends Controller
             'szineszek' =>$film->szineszek,
             'rendezoNev' =>$film->rendezok
             ];
-        }
-        //dd($filmek[2]);
-        //return $filmek;
-        //$filmek = Film::all();
+        } */
         return response()->json($filmek);
     }
 
@@ -66,9 +62,13 @@ class FilmController extends Controller
      * @param  \App\Models\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function show(Film $film)
+    public function show(int $id)
     {
-        //
+        $film = Film::find($id);
+        if (is_null($film)) {
+            return response()->json(["message" => "A megadott azonosítóval nem található film."], 404);
+        }
+        return response()->json($film);
     }
 
     /**
@@ -100,8 +100,13 @@ class FilmController extends Controller
      * @param  \App\Models\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Film $film)
+    public function destroy(int $id)
     {
-        //
+        $film = Film::find($id);
+        if (is_null($film)) {
+            return response()->json(["message" => "A megadott azonosítóval nem található film."], 404);
+        }
+        Film::destroy($id);
+        return response()->noContent();
     }
 }

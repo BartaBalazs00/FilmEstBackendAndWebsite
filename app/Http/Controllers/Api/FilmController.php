@@ -19,9 +19,8 @@ class FilmController extends Controller
      */
     public function index()
     {
-       // $filmek = DB::table('filmek')->Select('*')->get();
-        $filmek = [];
-        foreach (Film::all() as $film) {
+        $filmek = Film::all();
+        /* foreach (Film::all() as $film) {
             $filmek[] = [
             'id' => $film->id,
             'cim' => $film->cim,
@@ -32,7 +31,7 @@ class FilmController extends Controller
             'szineszek' =>$film->szineszek,
             'rendezoNev' =>$film->rendezok
             ];
-        }
+        } */
         return response()->json($filmek);
     }
 

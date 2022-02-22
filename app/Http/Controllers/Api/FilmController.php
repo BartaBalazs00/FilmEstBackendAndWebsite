@@ -62,9 +62,13 @@ class FilmController extends Controller
      * @param  \App\Models\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function show(Film $film)
+    public function show(int $id)
     {
-        //
+        $film = Film::find($id);
+        if (is_null($film)) {
+            return response()->json(["message" => "A megadott azonosítóval nem található film."], 404);
+        }
+        return response()->json($film);
     }
 
     /**
@@ -96,8 +100,13 @@ class FilmController extends Controller
      * @param  \App\Models\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Film $film)
+    public function destroy(int $id)
     {
-        //
+        $film = Film::find($id);
+        if (is_null($film)) {
+            return response()->json(["message" => "A megadott azonosítóval nem található film."], 404);
+        }
+        Film::destroy($id);
+        return response()->noContent();
     }
 }

@@ -74,7 +74,21 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
+
+                        <div class="form-group d-flex justify-content-center">
+                            {!! NoCaptcha::renderJs() !!}
+                            {!! NoCaptcha::display() !!}
+                        </div>
+                        <div class="form-group d-flex justify-content-center">
+                            @error('g-recaptcha-response')
+                                <span class="help-block" role="alert">
+                                    <strong style="font-size: 12; color: #DC3545;">{{ $errors->first('g-recaptcha-response') }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        
+                        <div class="row mb-0 pt-3">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}

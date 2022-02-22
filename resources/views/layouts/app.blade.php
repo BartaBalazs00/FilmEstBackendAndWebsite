@@ -70,10 +70,10 @@
                                     </form>
 
 
-                                    <a class="dropdown-item" href="{{ route('home') }}">Home</a>
+                                    <a class="dropdown-item" href="{{ route('profile.show', Auth::user()->id) }}">Home</a>
                                     </a>
 
-                                    <form id="home-form" action="{{ route('home') }}" method="GET" class="d-none">
+                                    <form id="home-form" action="{{ route('profile.show', Auth::user()->id) }}" method="GET" class="d-none">
                                         @csrf
                                     </form>
 

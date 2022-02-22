@@ -13,11 +13,6 @@
                 <div class="card-body">
                     <h1>{{$film->cim}}</h1>
                 </div>
-                <div class="card-footer">
-                    <h2>{{$film->kategoriak->pluck('kategoria')->implode(', ')}}</h2><br>
-                    <h2>{{$film->szineszek->pluck('szineszNev')->implode(', ')}}</h2><br>
-                    <h2>{{$film->rendezok->pluck('rendezoNev')->implode(', ')}}</h2>
-                </div>
                 </a>
             </div>
         

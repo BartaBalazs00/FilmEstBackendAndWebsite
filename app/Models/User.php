@@ -47,4 +47,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Film::class, "mentettfilmek", "userId", "filmId");
     }
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
 }

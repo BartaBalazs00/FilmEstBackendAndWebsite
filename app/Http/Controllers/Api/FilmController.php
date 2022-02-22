@@ -33,9 +33,6 @@ class FilmController extends Controller
             'rendezoNev' =>$film->rendezok
             ];
         }
-        //dd($filmek[2]);
-        //return $filmek;
-        //$filmek = Film::all();
         return response()->json($filmek);
     }
 

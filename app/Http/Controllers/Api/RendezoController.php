@@ -24,10 +24,6 @@ class RendezoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -46,9 +42,13 @@ class RendezoController extends Controller
      * @param  \App\Models\rendezok  $rendezo
      * @return \Illuminate\Http\Response
      */
-    public function show(rendezok $rendezo)
+    public function show(int $id)
     {
-        //
+        $rendezo = rendezok::find($id);
+        if (is_null($rendezo)) {
+            return response()->json(["message" => "A megadott azonosítóval nem található rendező."], 404);
+        }
+        return response()->json($rendezo);
     }
 
     /**
@@ -57,10 +57,6 @@ class RendezoController extends Controller
      * @param  \App\Models\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function edit(rendezok $rendezo)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

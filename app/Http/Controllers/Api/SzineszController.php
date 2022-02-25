@@ -24,10 +24,6 @@ class SzineszController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -46,9 +42,13 @@ class SzineszController extends Controller
      * @param  \App\Models\szineszek  $szinesz
      * @return \Illuminate\Http\Response
      */
-    public function show(szineszek $szinesz)
+    public function show(int $id)
     {
-        //
+        $szinesz = szineszek::find($id);
+        if (is_null($szinesz)) {
+            return response()->json(["message" => "A megadott azonosítóval nem található kategória."], 404);
+        }
+        return response()->json($szinesz);
     }
 
     /**
@@ -57,10 +57,6 @@ class SzineszController extends Controller
      * @param  \App\Models\szineszek  $szinesz
      * @return \Illuminate\Http\Response
      */
-    public function edit(szineszek $szinesz)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

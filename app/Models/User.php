@@ -42,6 +42,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    protected static function boot(){
+
+        parent::boot();
+
+        static::created(function ($user){
+            $user->profile()->create([
+                'leiras' => $user->username,
+            ]);
+        });
+    }
     
     public function filmek()
     {

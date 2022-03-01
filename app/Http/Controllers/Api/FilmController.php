@@ -40,10 +40,6 @@ class FilmController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -77,11 +73,6 @@ class FilmController extends Controller
      * @param  \App\Models\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function edit(Film $film)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      *

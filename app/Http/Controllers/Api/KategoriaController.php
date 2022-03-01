@@ -24,11 +24,6 @@ class KategoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -46,9 +41,13 @@ class KategoriaController extends Controller
      * @param  \App\Models\kategoriak  $kategoria
      * @return \Illuminate\Http\Response
      */
-    public function show(kategoriak $kategoria)
+    public function show(int $id)
     {
-        //
+        $kategoria = Kategoriak::find($id);
+        if (is_null($kategoria)) {
+            return response()->json(["message" => "A megadott azonosítóval nem található kategória."], 404);
+        }
+        return response()->json($kategoria);
     }
 
     /**
@@ -57,10 +56,6 @@ class KategoriaController extends Controller
      * @param  \App\Models\kategoriak  $kategoria
      * @return \Illuminate\Http\Response
      */
-    public function edit(kategoriak $kategoria)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

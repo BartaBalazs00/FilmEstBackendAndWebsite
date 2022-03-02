@@ -20,18 +20,19 @@ class FilmController extends Controller
     public function index()
     {
         $filmek = Film::all();
-        /* foreach (Film::all() as $film) {
+         /*foreach (Film::all() as $film) {
             $filmek[] = [
             'id' => $film->id,
             'cim' => $film->cim,
             'leiras'=> $film->leiras,
             'megjelenesiEv'=> $film->megjelenesiEv,
             'ertekeles'=> $film->ertekeles,
+            'imgUrl'=> $film->imageUrl,
             'kategoriak' => $film->kategoriak,
             'szineszek' =>$film->szineszek,
             'rendezoNev' =>$film->rendezok
             ];
-        } */
+        }*/
         return response()->json($filmek);
     }
 

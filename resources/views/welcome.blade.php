@@ -3,10 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row">
-    @foreach ($filmek as $film)
+        <h1>The actors number: {{$szineszekSzama}}</h1>
+        @foreach ($filmek as $film)
         
             <div class="card col-lg-3 col-sm-6 p-2 mx-0">
-                <a href="">
+                <a href="/film/{{$film->id}}">
                 <div class="card-title">
                     <img src="{{$film->imageUrl}}" class="card-img-top" alt="">
                 </div>

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3 col-sm-6">
-            <img src="{{ $user->profile->profileImage()}}" class=" rounded-circle pt-5 height: auto img-fluid">
+            <img src="{{ $user->profile->profileImage()}}" class=" rounded-circle mt-5 height: auto img-fluid">
         </div>
             <div class="col-lg-9 col-sm-6 pt-5">
                 <div><h1>{{$user->username}}</h1></div>
@@ -18,8 +18,12 @@
                 <div class="pt-3">{{$user->profile->leiras}}</div>
                 <div class="pt-3 fw-bold"><a href="#"> {{$user->profile->url}}</a></div>
             </div>
+            {{-- @foreach ($mentettFilmek->filmek as $mentettFilm)
+                <h1>{{$mentettFilm->filmId}}</h1>
+            @endforeach --}}
         </div>
     </div>
+    
 
 </div>
 @endsection

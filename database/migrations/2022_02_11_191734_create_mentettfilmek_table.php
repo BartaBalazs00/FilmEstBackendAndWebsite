@@ -14,10 +14,12 @@ class CreateMentettfilmekTable extends Migration
     public function up()
     {
         Schema::create('mentettfilmek', function (Blueprint $table) {
+            $table->id();
             $table->bigInteger("userId")->unsigned();
             $table->bigInteger("filmId")->unsigned();
             $table->foreign("userId")->references("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign("filmId")->references("id")->on("filmek")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->timestamps();
         });
     }
 

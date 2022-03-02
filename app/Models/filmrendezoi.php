@@ -12,7 +12,7 @@ class filmrendezoi extends Model
     protected $table="filmrendezoi";
 
     protected $visible = [
-        'filmID',
+        'filmId',
         'rendezoId'
     ];
 }

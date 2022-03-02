@@ -15,7 +15,8 @@ class FilmSzinesz extends Controller
      */
     public function index()
     {
-
+        $filmszineszei= filmszineszei::all();
+        return response()->json($filmszineszei);
     }
 
     /**

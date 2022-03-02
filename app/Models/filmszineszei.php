@@ -12,7 +12,7 @@ class filmszineszei extends Model
     protected $table="filmszineszei";
 
     protected $visible = [
-        'filmID',
+        'filmId',
         'szineszId'
     ];
 }

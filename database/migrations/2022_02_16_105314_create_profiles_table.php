@@ -20,6 +20,7 @@ class CreateProfilesTable extends Migration
             $table->string('cim')->nullable();
             $table->text("leiras")->nullable();
             $table->string("url")->nullable();
+            $table->string("image")->nullable();
             $table->timestamps();
         });
     }

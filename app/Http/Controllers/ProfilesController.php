@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Film;
+use App\Models\mentettfilmek;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -15,8 +17,10 @@ class ProfilesController extends Controller
     public function index($user)
     {
         $user = User::findOrFail($user);
+        //$mentettFilmek = Film::where('userId', '=', $user->id);
         return view('profiles.index', [
             'user' => $user,
+            //'mentettFilmek' => $mentettFilmek
         ]);
     }
 

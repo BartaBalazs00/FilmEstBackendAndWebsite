@@ -37,4 +37,15 @@ class Film extends Model
     {
         return $this->belongsToMany(User::class, "mentettfilmek", "filmId", "userId");
     }
+
+    public function isFavouritedBy(?User $user) {
+        if ($user === null) {
+            return false;
+        }
+        if ($this->user->where('id', $user->id)->count() === 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

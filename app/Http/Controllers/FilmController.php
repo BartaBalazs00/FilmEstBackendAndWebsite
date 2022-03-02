@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Film;
 use App\Models\filmkategoriai;
+use App\Models\mentettfilmek;
+use App\Models\szineszek;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use function GuzzleHttp\Promise\all;
@@ -20,7 +23,11 @@ class FilmController extends Controller
     {
        // $filmek = DB::table('filmek')->Select('*')->get();
         $filmek = Film::all();
-        return view('welcome', ['filmek' => $filmek]);
+        $szineszekSzama = szineszek::all()->Count();
+        return view('welcome', [
+            'filmek' => $filmek,
+            'szineszekSzama' => $szineszekSzama
+        ]);
     }
 
     /**
@@ -39,9 +46,9 @@ class FilmController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(int $filmId)
     {
-        //
+
     }
 
     /**
@@ -50,9 +57,11 @@ class FilmController extends Controller
      * @param  \App\Models\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function show(Film $film)
+    public function show(int $filmId)
     {
-        //
+        $film = Film::findOrFail($filmId);
+
+        return view('film', ['film'=> $film]);
     }
 
     /**
@@ -87,5 +96,22 @@ class FilmController extends Controller
     public function destroy(Film $film)
     {
         //
+    }
+
+    public function addToFavourites(Film $film) {
+        $userId = Auth::user()->id;
+        $mentettFilmek = new mentettfilmek();
+        $mentettFilmek->filmId = $film->id;
+        $mentettFilmek->userId = $userId;
+        $mentettFilmek->save();
+
+        return redirect()->back();
+    }
+    public function removeFromFavourites(Film $film)
+    {
+        $userId = Auth::user()->id;
+        $torlendoMentettFilm = mentettfilmek::where("filmId", "=", $film->id)->where("userId", "=", $userId);
+        $torlendoMentettFilm->delete();
+        return redirect()->back();
     }
 }

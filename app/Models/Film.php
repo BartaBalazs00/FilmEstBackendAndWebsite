@@ -35,7 +35,7 @@ class Film extends Model
     }
     public function user()
     {
-        return $this->belongsToMany(User::class, "mentettfilmek", "filmId", "userId");
+        return $this->belongsToMany(User::class, "mentettfilmek", "film_id", "user_id");
     }
 
     public function isFavouritedBy(?User $user) {

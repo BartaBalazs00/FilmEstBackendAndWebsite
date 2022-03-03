@@ -13,8 +13,7 @@ class mentettfilmek extends Model
     protected $table="mentettfilmek";
 
     protected $visible = [
-        'userId',
-        'filmId'
+        'user_id',
+        'film_id'
     ];
-
 }

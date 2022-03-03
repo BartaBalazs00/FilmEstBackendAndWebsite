@@ -55,7 +55,7 @@ class User extends Authenticatable
     
     public function filmek()
     {
-        return $this->belongsToMany(Film::class, "mentettfilmek", "userId", "filmId");
+        return $this->belongsToMany(Film::class, "mentettfilmek", "user_id", "film_id")->orderBy('create_at', 'desc');
     }
     public function profile()
     {

@@ -101,8 +101,8 @@ class FilmController extends Controller
     public function addToFavourites(Film $film) {
         $userId = Auth::user()->id;
         $mentettFilmek = new mentettfilmek();
-        $mentettFilmek->filmId = $film->id;
-        $mentettFilmek->userId = $userId;
+        $mentettFilmek->film_id = $film->id;
+        $mentettFilmek->user_id = $userId;
         $mentettFilmek->save();
 
         return redirect()->back();
@@ -110,7 +110,7 @@ class FilmController extends Controller
     public function removeFromFavourites(Film $film)
     {
         $userId = Auth::user()->id;
-        $torlendoMentettFilm = mentettfilmek::where("filmId", "=", $film->id)->where("userId", "=", $userId);
+        $torlendoMentettFilm = mentettfilmek::where("film_id", "=", $film->id)->where("user_id", "=", $userId);
         $torlendoMentettFilm->delete();
         return redirect()->back();
     }

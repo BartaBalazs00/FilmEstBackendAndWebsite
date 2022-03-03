@@ -13,15 +13,23 @@
                     <div class="pb-3"><a href="/profile/{{$user->id}}/edit">Profil szerkesztése</a></div>
                 @endcan
                 
-                <div class="pe-5"><strong>153</strong> mentett filmek</div>
+                <div class="pe-5"><strong>{{$mentettFilmek->count()}}</strong> mentett filmek</div>
                 <div class="pt-3"><strong>{{$user->profile->cim}}</strong></div>
                 <div class="pt-3">{{$user->profile->leiras}}</div>
                 <div class="pt-3 fw-bold"><a href="#"> {{$user->profile->url}}</a></div>
             </div>
-            {{-- @foreach ($mentettFilmek->filmek as $mentettFilm)
-                <h1>{{$mentettFilm->filmId}}</h1>
-            @endforeach --}}
-        </div>
+            @foreach ( $mentettFilmek as $mentettFilm)
+            <div class="card col-lg-3 col-sm-6 p-2 mx-0">
+                <a href="/film/{{$mentettFilm->id}}">
+                <div class="card-title">
+                    <img src="{{$mentettFilm->imageUrl}}" class="card-img-top" alt="">
+                </div>
+                <div class="card-body">
+                    <h1>{{$mentettFilm->cim}}</h1>
+                </div>
+                </a>
+            </div>
+            @endforeach
     </div>
     
 

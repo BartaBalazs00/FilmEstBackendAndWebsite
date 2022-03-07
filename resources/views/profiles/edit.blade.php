@@ -69,7 +69,7 @@
                     <input type="file" class="form-control-file" id="image" name="image">
 
                     @if ($errors->has('image'))
-                        <strong>{{ $errors->first('image') }}</strong>
+                        <strong style="font-size: 12; color: #DC3545;">{{ $errors->first('image') }}</strong>
                     @endif
                 </div>
 

@@ -43,7 +43,7 @@ class ProfilesController extends Controller
             'cim' => 'required',
             'leiras' => 'required',
             'url' => 'url',
-            'image' => '',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
         if(request('image')){

@@ -21,6 +21,7 @@ class ProfilesController extends Controller
         $mentettFilmek = Film::whereHas('user',function($q) use($user) {
                                     $q->where('user_id', $user->id);
                                 })->get();
+        $mentettFilmek = $mentettFilmek->reverse();
        // dd($mentettFilmek);
         return view('profiles.index', [
             'user' => $user,

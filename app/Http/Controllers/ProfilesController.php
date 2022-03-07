@@ -15,20 +15,39 @@ class ProfilesController extends Controller
     // {
     //     $this->middleware('auth');
     // }
-    public function index($user)
+    public function index()
     {
+        $users = User::all();
+        $filmek = Film::with("user_id", $users)->groupBy("user_id");
+        dd($filmek);
+        return view('profiles.index',[
+            'users' => $users,
+            'filmek' => $filmek
+        ]);
+    }
+    
+    public function following(User $user)
+    {
+        $users = auth()->user()->following()->pluck('profiles.user_id');
+        dd($users);
+    }
+    public function show($user)
+    {
+        $follows = (auth()->user()) ? auth()->user()->following->contains($user) : false;
+        //dd($follows);
         $user = User::findOrFail($user);
+
         $mentettFilmek = Film::whereHas('user',function($q) use($user) {
                                     $q->where('user_id', $user->id);
                                 })->get();
         $mentettFilmek = $mentettFilmek->reverse();
        // dd($mentettFilmek);
-        return view('profiles.index', [
+        return view('profiles.show', [
             'user' => $user,
-            'mentettFilmek' => $mentettFilmek
+            'mentettFilmek' => $mentettFilmek,
+            'follows' => $follows
         ]);
     }
-
     public function edit($user)
     {
         $user = User::findOrFail($user);

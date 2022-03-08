@@ -65,4 +65,12 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Profile::class);
     }
+
+    public static function getMentettFilmek(User $user){
+        $mentettFilmek = Film::whereHas('user',function($q) use($user) {
+            $q->where('user_id', $user->id);
+        })->get();
+        $mentettFilmek = $mentettFilmek->reverse();
+        return $mentettFilmek;
+    }
 }

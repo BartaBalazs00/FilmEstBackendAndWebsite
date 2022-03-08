@@ -84,6 +84,14 @@
                                     <form id="welcome-form" action="{{ route('welcome') }}" method="GET" class="d-none">
                                         @csrf
                                     </form>
+
+
+                                    <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}/following">Following</a>
+                                    </a>
+
+                                    <form id="welcome-form" action="/profile/{{ Auth::user()->id }}/following" method="GET" class="d-none">
+                                        @csrf
+                                    </form>
                                 </div>
                             </li>
                         @endguest

@@ -20,8 +20,10 @@ Route::post('follow/{user}', [App\Http\Controllers\FollowsController::class, 'st
 Route::get('/', [ FilmController::class, 'index' ])->name("welcome");
 
 Route::get('/profile', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.index');
-Route::get('/profile/following', [App\Http\Controllers\ProfilesController::class, 'following'])->name('profile.following');
+
+Route::get('/profile/followers', [App\Http\Controllers\ProfilesController::class, 'followers'])->name('profile.followers');
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'show'])->name('profile.show');
+Route::get('/profile/{user}/following', [App\Http\Controllers\ProfilesController::class, 'following'])->name('profile.following');
 Route::get('/profile/{user}/edit', [App\Http\Controllers\ProfilesController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'update'])->name('profile.update');
 

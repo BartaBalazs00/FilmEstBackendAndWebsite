@@ -22,7 +22,7 @@ class FilmController extends Controller
     public function index()
     {
        // $filmek = DB::table('filmek')->Select('*')->get();
-        $filmek = Film::all();
+        $filmek = Film::paginate(16);
         $szineszekSzama = szineszek::all()->Count();
         return view('welcome', [
             'filmek' => $filmek,

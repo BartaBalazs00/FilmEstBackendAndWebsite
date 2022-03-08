@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Film;
 use App\Models\mentettfilmek;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Intervention\Image\Facades\Image;
 
 class ProfilesController extends Controller
@@ -18,29 +21,41 @@ class ProfilesController extends Controller
     public function index()
     {
         $users = User::all();
-        $filmek = Film::with("user_id", $users)->groupBy("user_id");
-        dd($filmek);
         return view('profiles.index',[
-            'users' => $users,
-            'filmek' => $filmek
+            'users' => $users
         ]);
     }
     
     public function following(User $user)
     {
-        $users = auth()->user()->following()->pluck('profiles.user_id');
-        dd($users);
+        $users = User::find($user->following()->pluck('profiles.user_id'));
+        return view('profiles.following',[
+            'users' => $users,
+            'followingUser' => $user
+        ]);
     }
+
+    public function followers()
+    {
+        // if(Auth::check()){
+
+        //     dd(auth()->user()->profile()->followers());
+
+        //     $users = User::find(auth()->user()->profile()->followers()->pluck("profile.user.user_id"));
+        //     dd($users);
+        //     return view('profiles.followers',['users' => $users]);
+        // } else {
+        //     return Redirect::route('login');
+        // }
+    }
+
     public function show($user)
     {
         $follows = (auth()->user()) ? auth()->user()->following->contains($user) : false;
         //dd($follows);
         $user = User::findOrFail($user);
 
-        $mentettFilmek = Film::whereHas('user',function($q) use($user) {
-                                    $q->where('user_id', $user->id);
-                                })->get();
-        $mentettFilmek = $mentettFilmek->reverse();
+        $mentettFilmek = $user->getMentettFilmek($user);
        // dd($mentettFilmek);
         return view('profiles.show', [
             'user' => $user,

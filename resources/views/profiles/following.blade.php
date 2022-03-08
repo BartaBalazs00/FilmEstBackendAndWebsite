@@ -2,7 +2,11 @@
 
 @section('content')
 <div class="container">
+    
+    <h1 style="text-align: center">{{ $followingUser->username }} is following these people</h1>
+
     @foreach($users as $user)
+
         <div class="d-flex pt-5 pb-3">
             <div class="pe-3">
                 <img src="{{ $user->profile->profileImage()}}" class="img-fluid rounded-circle w-100" style="max-width: 40px">
@@ -31,5 +35,7 @@
             @endif
         </div>
     @endforeach
+
+    
 </div>
 @endsection

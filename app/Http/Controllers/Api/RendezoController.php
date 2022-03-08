@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Models\rendezok;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RendezoStoreRequest;
+use App\Http\Requests\SzineszStoreRequest;
+use Illuminate\Support\Facades\Validator;
 
 class RendezoController extends Controller
 {
@@ -33,7 +36,19 @@ class RendezoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), (new RendezoStoreRequest())->rules());
+        if ($validator->fails()) {
+            $errormsg = "";
+            foreach ($validator->errors()->all() as $error) {
+                $errormsg .= $error . " ";
+            }
+            $errormsg = trim($errormsg);
+            return response()->json($errormsg, 400);
+        }
+        $rendezo = new rendezok();
+        $rendezo->fill($request->all());
+        $rendezo->save();
+        return response()->json($rendezo, 201);
     }
 
     /**
@@ -76,9 +91,14 @@ class RendezoController extends Controller
      * @param  \App\Models\rendezok  $rendezo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(rendezok $rendezo)
+    public function destroy(int $id)
     {
-        //
+        $rendezo = rendezok::find($id);
+        if (is_null($rendezo)) {
+            return response()->json(["message" => "A megadott azonosítóval nem található rendező."], 404);
+        }
+        rendezok::destroy($id);
+        return response()->noContent();
     }
 }
 

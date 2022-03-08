@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Film extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $table="filmek";
     protected $fillable = ['cim', 'leiras', 'megjelenesiEv', 'ertekeles', 'imageUrl'];
 

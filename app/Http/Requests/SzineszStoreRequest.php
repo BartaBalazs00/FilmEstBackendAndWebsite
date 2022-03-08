@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FilmRequest extends FormRequest
+class SzineszStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,7 @@ class FilmRequest extends FormRequest
     public function rules()
     {
         return [
-            'cim'=> 'required|string|max:255',
-            'leiras'=> 'required|string|max:500',
-            'megjelenesiEv'=>'required|numeric|integer|min:1900',
-            'ertekeles'=> 'required|numeric|integer|min:1|max:10',
-            'imageUrl'=> 'required|string|max:500'
+            'szineszNev'=> 'required|string|max:255',
         ];
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     
-    <h1 style="text-align: center">{{ $followingUser->username }} is following these people</h1>
+    <h1 style="text-align: center"><strong>{{ $followingUser->username }}</strong> is following these people</h1>
 
     @foreach($users as $user)
 

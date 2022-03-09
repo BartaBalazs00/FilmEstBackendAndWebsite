@@ -3,7 +3,20 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <h1>The actors number: {{$szineszekSzama}}</h1>
+        <form action="{{url('/search-film')}}" method="post">
+            @csrf
+            <input type="text" name="title" placeholder="Search for Film Title"/>
+            <input type="submit" value="Search"/>
+            @error('title')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $error->first("title") }}</strong>
+                </span>
+            @enderror
+        </form>
+    </div>
+
+    <div class="row">
+        
         @foreach ($filmek as $film)
         
             <div class="card col-lg-3 col-sm-6 p-2 mx-0">
@@ -17,12 +30,13 @@
                 </a>
             </div>
     @endforeach
+    </div>
 
     <div class="row">
         <div class="col-12 d-flex justify-content-center">
             {{ $filmek->links('pagination::bootstrap-4') }}
         </div>
     </div>
-</div>
+
 </div>
 @endsection

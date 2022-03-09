@@ -10,10 +10,10 @@
             <div class="col-8 offset-2">
 
                 <div class="row">
-                    <h1>Profil Szerkesztése</h1>
+                    <h1>Edit profile</h1>
                 </div>
                 <div class="form-group row">
-                    <label for="cim" class="col-md-4 col-form-label">Cím</label>
+                    <label for="cim" class="col-md-4 col-form-label">Title</label>
 
                     <input id="cim"
                            type="text"
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="leiras" class="col-md-4 col-form-label">Leírás</label>
+                    <label for="leiras" class="col-md-4 col-form-label">Description</label>
 
                     <input id="leiras"
                            type="text"

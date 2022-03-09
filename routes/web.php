@@ -32,4 +32,5 @@ Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class,
 Route::post('/film/{film}/addtofavourites', [App\Http\Controllers\FilmController::class, 'addToFavourites'])->name('film.addtofavourites');
 Route::delete('/film/{film}/removeFromFavourites', [App\Http\Controllers\FilmController::class, 'removeFromFavourites'])->name('film.removeFromFavourites');
 Route::resource('film', FilmController::class);
+Route::post('/search-film', [App\Http\Controllers\FilmController::class, "search"])->name("search");
 Auth::routes();

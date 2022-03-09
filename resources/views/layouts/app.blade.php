@@ -25,8 +25,14 @@
             <div class="container">
                 <a class="navbar-brand d-flex" href="{{ url('/') }}">
                     <div ><img src="/img/FilmEst.jpg" style="height: 50px" class="pt-1 pe-3"></div>
-                    <div class="pt-2 ps-3" style="border-left: 1px solid black">Film Est</div>
+                    <div class="pt-3 ps-3 pe-3" style="border-left: 1px solid black; border-right:1px solid black">Film Est</div>
                 </a>
+
+                <a class="navbar-brand" href="{{ url('/profile') }}">
+                    <div class="pt-2 ps-3">Users</div>
+                </a> 
+
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

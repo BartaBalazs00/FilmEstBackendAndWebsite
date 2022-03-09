@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use function GuzzleHttp\Promise\all;
+use function PHPUnit\Framework\isEmpty;
 
 class FilmController extends Controller
 {
@@ -25,9 +26,39 @@ class FilmController extends Controller
         $filmek = Film::paginate(16);
         $szineszekSzama = szineszek::all()->Count();
         return view('welcome', [
-            'filmek' => $filmek,
-            'szineszekSzama' => $szineszekSzama
+            'filmek' => $filmek
         ]);
+    }
+    public function indexWithError($error)
+    {
+        $filmek = Film::paginate(16);
+        return view('welcome', [
+            'filmek' => $filmek,
+            "error" => $error
+        ]);
+    }
+    public function search(Request $request)
+    {
+        if(!$request->filled('title')){
+            return redirect('/');
+        }
+        if($request->isMethod('post')){
+            $title = $request->get('title');
+            $filmek = Film::where('cim', 'LIKE', '%'.$title.'%')->paginate(16);
+            //dd($filmek);
+            if($filmek->isEmpty())
+            {
+                //dd($filmek);
+                $error = "There was no film found.";
+                FilmController::indexWithError($error);
+            }
+            $szineszekSzama = szineszek::all()->Count();
+            return view("welcome", [
+                "filmek" => $filmek,
+                'szineszekSzama' => $szineszekSzama
+            ]);
+
+        }
     }
 
     /**

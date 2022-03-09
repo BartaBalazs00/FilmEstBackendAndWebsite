@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SzineszStoreRequest;
+use App\Http\Requests\SzineszUpdateRequest;
 use App\Models\szineszek;
 use Illuminate\Support\Facades\Validator;
 
@@ -79,9 +80,26 @@ class SzineszController extends Controller
      * @param  \App\Models\szineszek  $szinesz
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, szineszek $szinesz)
+    public function update(Request $request, int $id)
     {
-        //
+        if ($request->isMethod('PUT')) {
+            $validator = Validator::make($request->all(), (new SzineszUpdateRequest())->rules());
+            if ($validator->fails()) {
+                $errormsg = "";
+                foreach ($validator->errors()->all() as $error) {
+                    $errormsg .= $error . " ";
+                }
+                $errormsg = trim($errormsg);
+                return response()->json($errormsg, 400);
+            }
+        }
+        $szinesz = szineszek::find($id);
+        if (is_null($szinesz)) {
+            return response()->json(["message" => "A megadott azonosítóval nem található rendező."], 404);
+        }
+        $szinesz->fill($request->all());
+        $szinesz->save();
+        return response()->json($szinesz, 200);
     }
 
     /**

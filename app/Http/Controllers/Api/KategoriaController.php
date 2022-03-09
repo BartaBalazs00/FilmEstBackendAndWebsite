@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\kategoriak;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\KategoriaStoreRequest;
+use App\Http\Requests\KategoriaUpdateRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
 
@@ -79,9 +80,26 @@ class KategoriaController extends Controller
      * @param  \App\Models\kategoriak  $kategoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, kategoriak $kategoria)
+    public function update(KategoriaUpdateRequest $request, int $id)
     {
-        //
+        if ($request->isMethod('PUT')) {
+            $validator = FacadesValidator::make($request->all(), (new KategoriaUpdateRequest())->rules());
+            if ($validator->fails()) {
+                $errormsg = "";
+                foreach ($validator->errors()->all() as $error) {
+                    $errormsg .= $error . " ";
+                }
+                $errormsg = trim($errormsg);
+                return response()->json($errormsg, 400);
+            }
+        }
+        $kategoria = kategoriak::find($id);
+        if (is_null($kategoria)) {
+            return response()->json(["message" => "A megadott azonosítóval nem található kategória."], 404);
+        }
+        $kategoria->fill($request->all());
+        $kategoria->save();
+        return response()->json($kategoria, 200);
     }
 
     /**

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\rendezok;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RendezoStoreRequest;
+use App\Http\Requests\RendezoUpdateRequest;
 use App\Http\Requests\SzineszStoreRequest;
 use Illuminate\Support\Facades\Validator;
 
@@ -80,9 +81,26 @@ class RendezoController extends Controller
      * @param  \App\Models\rendezok  $rendezo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, rendezok $rendezo)
+    public function update(Request $request, int $id)
     {
-        //
+        if ($request->isMethod('PUT')) {
+            $validator = Validator::make($request->all(), (new RendezoUpdateRequest())->rules());
+            if ($validator->fails()) {
+                $errormsg = "";
+                foreach ($validator->errors()->all() as $error) {
+                    $errormsg .= $error . " ";
+                }
+                $errormsg = trim($errormsg);
+                return response()->json($errormsg, 400);
+            }
+        }
+        $rendezo = rendezok::find($id);
+        if (is_null($rendezo)) {
+            return response()->json(["message" => "A megadott azonosítóval nem található rendező."], 404);
+        }
+        $rendezo->fill($request->all());
+        $rendezo->save();
+        return response()->json($rendezo, 200);
     }
 
     /**

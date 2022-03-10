@@ -3,7 +3,21 @@
 @section('content')
 <div class="container">
     
-    <h1 style="text-align: center"><strong>{{ $followingUser->username }}</strong> is following these people</h1>
+    @php
+        $loggedIn = false;
+    @endphp
+    @if(Auth::check())
+        @if(auth()->user()->id === $followingUser->id)
+            @php
+                $loggedIn = true;
+            @endphp
+        @endif
+    @endif
+    @if($loggedIn === true)
+        <h1 style='text-align: center'>You are following these people</h1>
+    @else
+        <h1 style='text-align: center'><strong>{{ $followingUser->username }} is following these people</strong> </h1>
+    @endif
 
     @foreach($users as $user)
 

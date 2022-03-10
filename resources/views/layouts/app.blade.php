@@ -23,21 +23,27 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-flex" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     <div ><img src="/img/FilmEst.jpg" style="height: 50px" class="pt-1 pe-3"></div>
-                    <div class="pt-3 ps-3 pe-3" style="border-left: 1px solid black; border-right:1px solid black">Film Est</div>
                 </a>
-
-                <a class="navbar-brand" href="{{ url('/profile') }}">
-                    <div class="pt-2 ps-3">Users</div>
-                </a> 
-
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/') }}">
+                            Film Est
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/profile') }}">
+                            Users
+                        </a> 
+                    </li>
+                </ul>
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
@@ -65,17 +71,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-
-
+                                    
                                     <a class="dropdown-item" href="{{ route('profile.show', Auth::user()->id) }}">Home</a>
                                     </a>
 
@@ -96,6 +92,26 @@
                                     </a>
 
                                     <form id="welcome-form" action="/profile/{{ Auth::user()->id }}/following" method="GET" class="d-none">
+                                        @csrf
+                                    </form>
+
+
+
+                                    <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}/followers">Followers</a>
+                                    </a>
+
+                                    <form id="welcome-form" action="/profile/{{ Auth::user()->id }}/followers" method="GET" class="d-none">
+                                        @csrf
+                                    </form>
+
+
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>

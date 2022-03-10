@@ -35,18 +35,16 @@ class ProfilesController extends Controller
         ]);
     }
 
-    public function followers()
+    public function followers(User $user)
     {
-        // if(Auth::check()){
 
-        //     dd(auth()->user()->profile()->followers());
-
-        //     $users = User::find(auth()->user()->profile()->followers()->pluck("profile.user.user_id"));
-        //     dd($users);
-        //     return view('profiles.followers',['users' => $users]);
-        // } else {
-        //     return Redirect::route('login');
-        // }
+        $users = User::find($user->profile->followers->pluck('profile.user_id'));
+        
+        return view('profiles.followers',[
+            'users' => $users,
+            'followedUser' => $user
+        ]);
+        
     }
 
     public function show($user)

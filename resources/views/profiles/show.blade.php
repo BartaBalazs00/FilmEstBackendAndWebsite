@@ -20,11 +20,16 @@
                 @endcan
                 <div class="d-flex">
                     <div class="pe-5"><strong>{{$mentettFilmek->count()}}</strong> saved films</div>
-                    <div class="pe-5"><strong>{{$user->profile->followers->count()}}</strong> followers</div>
+                    <div class="pe-5"><strong>{{$user->profile->followers->count()}}</strong><a href="{{ route('profile.followers', $user->id)}}">followers</a></div>
+                    <form id="welcome-form" action="{{ route('profile.followers', $user->id) }}" method="GET" class="d-none">
+                        @csrf
+                    </form>
+
                     <div class="pe-5"><strong>{{$user->following->count()}}</strong><a href="{{ route('profile.following', $user->id)}}">following</a></div>
                     <form id="welcome-form" action="{{ route('profile.following', $user->id) }}" method="GET" class="d-none">
                         @csrf
                     </form>
+
                 </div>
                 <div class="pt-3"><strong>{{$user->profile->cim}}</strong></div>
                 <div class="pt-3">{{$user->profile->leiras}}</div>

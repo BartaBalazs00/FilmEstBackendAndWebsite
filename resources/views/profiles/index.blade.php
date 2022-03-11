@@ -2,6 +2,20 @@
 
 @section('content')
 <div class="container">
+    <div class="row">
+
+        <form action="{{ route('user.search') }}" method="GET">
+            <div class="form-group">
+                <input type="text" class="form-control" value="{{$search}}" name="search" placeholder="Search for users">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+        @if($error != "")
+            <h1>{{ $error }}</h1>
+        @endif      
+    </div>
     @foreach($users as $user)
         <div class="d-flex pt-5 pb-3">
             <div class="pe-3">

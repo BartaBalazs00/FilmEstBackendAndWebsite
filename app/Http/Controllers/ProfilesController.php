@@ -20,10 +20,50 @@ class ProfilesController extends Controller
     // }
     public function index()
     {
+        $error = "";
+        $search = "";
         $users = User::all();
         return view('profiles.index',[
-            'users' => $users
+            'users' => $users,
+            'error' => $error,
+            "search" => $search
         ]);
+    }
+
+    public function indexWithError($error, $search)
+    {
+        $users = User::all();
+        return view('profiles.index',[
+            'users' => $users,
+            'error' => $error,
+            "search" => $search
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        $error = "";
+
+        if($request->get("search") != ""){
+
+            $search = $request->get("search");
+            $users = User::where('username', 'LIKE', '%'.$search.'%')->paginate(5);
+            $users->appends($request->all());
+
+            if($users->count() > 0){
+                return view('profiles.index', [
+                    'users' => $users,
+                    "error" => $error,
+                    "search" => $search
+                ]);
+
+            } else {
+                $error = "There was no user found for: ".$search;
+                return ProfilesController::indexWithError($error, $search);
+            }
+        }
+
+        return redirect("/profile");
     }
     
     public function following(User $user)

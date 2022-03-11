@@ -11,6 +11,9 @@
             <label for="cim">Title:</label>
             <h1 class="ps-3" id="cim">{{$film->cim}}</h1>
 
+            <label class="pt-4" for="cim">Released Date:</label>
+            <h1 class="ps-3" id="cim">{{$film->megjelenesiEv}}</h1>
+
             <label class="pt-4" for="leiras">Descripiton:</label>
             <h2 class="ps-3" id="leiras">{!! $film->leiras !!}</h2>
 

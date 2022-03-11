@@ -22,43 +22,50 @@ class FilmController extends Controller
      */
     public function index()
     {
-       // $filmek = DB::table('filmek')->Select('*')->get();
         $filmek = Film::paginate(16);
-        $szineszekSzama = szineszek::all()->Count();
+        $error = "";
+        $search = "";
         return view('welcome', [
-            'filmek' => $filmek
+            'filmek' => $filmek,
+            "error" => $error,
+            "search" => $search
         ]);
     }
-    public function indexWithError($error)
+    
+    public function indexWithError($error, $search)
     {
         $filmek = Film::paginate(16);
         return view('welcome', [
             'filmek' => $filmek,
-            "error" => $error
+            "error" => $error,
+            "search" => $search
         ]);
     }
+
     public function search(Request $request)
     {
-        if(!$request->filled('title')){
-            return redirect('/');
-        }
-        if($request->isMethod('post')){
-            $title = $request->get('title');
-            $filmek = Film::where('cim', 'LIKE', '%'.$title.'%')->paginate(16);
-            //dd($filmek);
-            if($filmek->isEmpty())
-            {
-                //dd($filmek);
-                $error = "There was no film found.";
-                FilmController::indexWithError($error);
-            }
-            $szineszekSzama = szineszek::all()->Count();
-            return view("welcome", [
-                "filmek" => $filmek,
-                'szineszekSzama' => $szineszekSzama
-            ]);
+        $error = "";
 
+        if($request->get("search") != ""){
+
+            $search = $request->get("search");
+            $filmek = Film::where('cim', 'LIKE', '%'.$search.'%')->paginate(16);
+            $filmek->appends($request->all());
+
+            if($filmek->count() > 0){
+                return view('welcome', [
+                    'filmek' => $filmek,
+                    "error" => $error,
+                    "search" => $search
+                ]);
+
+            } else {
+                $error = "There was no film found for: ".$search;
+                return FilmController::indexWithError($error, $search);
+            }
         }
+
+        return redirect("/");
     }
 
     /**

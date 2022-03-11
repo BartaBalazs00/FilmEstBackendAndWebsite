@@ -3,20 +3,23 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <form action="{{url('/search-film')}}" method="post">
-            @csrf
-            <input type="text" name="title" placeholder="Search for Film Title"/>
-            <input type="submit" value="Search"/>
-            @error('title')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $error->first("title") }}</strong>
-                </span>
-            @enderror
+
+        <form action="{{ route('film.search') }}" method="GET">
+            <div class="form-group">
+                <input type="text" class="form-control" name="search" value="{{$search}}" placeholder="Search for film title">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
         </form>
+        @if($error != "")
+            <h1>{{ $error }}</h1>
+        @endif  
     </div>
 
     <div class="row">
         
+
         @foreach ($filmek as $film)
         
             <div class="card col-lg-3 col-sm-6 p-2 mx-0">
@@ -34,7 +37,9 @@
 
     <div class="row">
         <div class="col-12 d-flex justify-content-center">
-            {{ $filmek->links('pagination::bootstrap-4') }}
+            @if(sizeof($filmek) > 0)
+                {{ $filmek->links('pagination::bootstrap-4') }}
+            @endif
         </div>
     </div>
 

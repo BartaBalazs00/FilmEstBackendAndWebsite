@@ -18,13 +18,15 @@
     
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e320c2c21a.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <div ><img src="/img/FilmEst.jpg" style="height: 50px" class="pt-1 pe-3"></div>
+                    <div><img src="/img/FilmEst.jpg" style="height: 50px" class="pt-1 pe-3"></div>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

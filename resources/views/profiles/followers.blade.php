@@ -14,9 +14,22 @@
         @endif
     @endif
     @if($loggedIn === true)
-        <h1 style='text-align: center'>Your followers are</h1>
+        @if($users->count() != 0)
+            <h1 style='text-align: center'>Your followers are</h1>
+        @else
+            <div style='text-align: center'>
+                <h1>Your have no followers</h1>
+                <div class="wh-50%" style="font-size: 300px">
+                    <i class="fas fa-frown"></i>
+                </div>
+            </div>
+        @endif
     @else
-        <h1 style='text-align: center'><strong>{{ $followedUser->username }}'s followers are</strong> </h1>
+        @if($users->count() != 0)
+            <h1 style='text-align: center'><strong>{{ $followedUser->username }}'s followers are</strong> </h1>
+        @else
+            <h1 style='text-align: center'><strong>{{ $followedUser->username }} has no followers</strong> </h1>
+        @endif
     @endif
     
 
@@ -46,7 +59,7 @@
                     </div>
                     @endforeach
             @else
-                <h1>Has no saved films</h1>
+                <h1>Has no saved films <i class="fas fa-frown"></i></h1>
             @endif
         </div>
     @endforeach

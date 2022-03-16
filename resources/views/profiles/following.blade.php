@@ -14,9 +14,32 @@
         @endif
     @endif
     @if($loggedIn === true)
-        <h1 style='text-align: center'>You are following these people</h1>
+        @if($users->count() != 0)
+            <h1 style='text-align: center'>You are following these people</h1>
+        @else
+            <div style='text-align: center'>
+                <div>
+                    <h1 >You are not following anybody</h1>
+                </div>
+                <div class="wh-50%" style="font-size: 300px">
+                    <i class="fas fa-frown"></i>
+                </div>
+                <div>
+                    <h2>
+                        <a class="nav-link" href="{{ url('/profile') }}">
+                            Search for Users to follow
+                        </a> 
+                    </h2>
+                </div>
+            </div>
+        @endif
     @else
-        <h1 style='text-align: center'><strong>{{ $followingUser->username }} is following these people</strong> </h1>
+        @if($users->count() != 0)
+            <h1 style='text-align: center'><strong>{{ $followingUser->username }} is following these people</strong> </h1>
+        @else
+            <h1 style='text-align: center'><strong>{{ $followingUser->username }} is not following anybody</strong> </h1>
+        @endif    
+        
     @endif
 
     @foreach($users as $user)
@@ -32,7 +55,7 @@
         @php $mentettFilmek = $user->getMentettFilmek($user); @endphp
         <div class="row">
             @if ($mentettFilmek->count() > 0)
-                    @foreach ( $mentettFilmek as $mentettFilm)
+                @foreach ( $mentettFilmek as $mentettFilm)
                     <div class="card col-lg-3 col-sm-6 p-2 mx-0">
                         <a href="/film/{{$mentettFilm->id}}">
                         <div class="card-title">
@@ -43,13 +66,12 @@
                         </div>
                         </a>
                     </div>
-                    @endforeach
+                @endforeach
             @else
-                <h1>Has no saved films</h1>
+                <h1>Has no saved films <i class="fas fa-frown"></i></h1>
             @endif
         </div>
     @endforeach
-
     
 </div>
 @endsection

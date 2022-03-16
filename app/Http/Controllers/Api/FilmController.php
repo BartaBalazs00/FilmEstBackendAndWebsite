@@ -56,25 +56,23 @@ class FilmController extends Controller
     public function store(Request $request)
     {
         $film = new Film();
-        $film->fill($request->input(['cim','leiras','megjelenesiEv','ertekeles','imageUrl']));
-        foreach($request->only(['kategoriak']) as $kategoria){
-            $kat=new kategoriak();
-            $kat->fill($kategoria);
-            $film->kategoriak->attach($kat);
+        $film->fill($request->only(['cim','leiras','megjelenesiEv','ertekeles','imageUrl']));
+        $film->save();
+        foreach($request->input('kategoriak') as $kategoria){
+            $kat=kategoriak::find($kategoria['id']);
+            $film->kategoriak()->attach($kat);
 
         }
-        foreach($request->input(['rendezok']) as $rendezo){
-            $rend=new rendezok();
-            $rend->fill($rendezo);
-            $film->rendezok->attach($rend);
+        foreach($request->input('rendezok') as $rendezo){
+            $rend=rendezok::find(Arr::get($rendezo,'id'));
+            $film->rendezok()->attach($rend);
 
         }
-        foreach($request->input(['szineszek']) as $szinesz){
-            $szin=new szineszek();
-            $szin->fill($szinesz);
-            $film->szineszek->attach($szin);
-
+        foreach($request->input('szineszek') as $szinesz){
+            $szin=szineszek::find(Arr::get($szinesz,'id'));
+            $film->szineszek()->attach($szin);
         }
+
         return response()->json($film, 201);
 
     }

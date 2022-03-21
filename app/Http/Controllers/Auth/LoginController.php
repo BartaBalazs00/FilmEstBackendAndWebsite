@@ -34,9 +34,21 @@ class LoginController extends Controller
      *
      * @return void
      */
+    protected $username;
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        $this->username = $this->findUsername();
+    }
+    public function findUsername(){
+        $login = request()->input("login");
+        $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        request()->merge([$fieldType => $login]);
+
+        return $fieldType;
+    }
+    public function username(){
+        return $this->username;
     }
     protected function validateLogin(Request $request)
     {
@@ -45,5 +57,11 @@ class LoginController extends Controller
             'password' => 'required|string',
             'g-recaptcha-response' => 'required|captcha'
         ]);
+        /*
+        $loginType = $request->input("login");
+        $this->username = filter_var($loginType, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $request->merge([$this->username => $loginType]);
+
+        return property_exists($this, 'username') ? $this->username : 'email';*/
     }
 }

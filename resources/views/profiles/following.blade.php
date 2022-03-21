@@ -26,7 +26,7 @@
                 </div>
                 <div>
                     <h2>
-                        <a class="nav-link" href="{{ url('/profile') }}">
+                        <a href="{{ url('/profile') }}">
                             Search for Users to follow
                         </a> 
                     </h2>

@@ -37,7 +37,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/') }}">
-                            Film Est
+                            Movies
                         </a>
                     </li>
                     <li class="nav-item">
@@ -74,7 +74,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     
-                                    <a class="dropdown-item" href="{{ route('profile.show', Auth::user()->id) }}">Home</a>
+                                    <a class="dropdown-item" href="{{ route('profile.show', Auth::user()->id) }}">My account</a>
                                     </a>
 
                                     <form id="home-form" action="{{ route('profile.show', Auth::user()->id) }}" method="GET" class="d-none">
@@ -82,7 +82,7 @@
                                     </form>
 
 
-                                    <a class="dropdown-item" href="{{ route('welcome') }}">Welcome</a>
+                                    <a class="dropdown-item" href="{{ route('welcome') }}">Movies</a>
                                     </a>
 
                                     <form id="welcome-form" action="{{ route('welcome') }}" method="GET" class="d-none">
@@ -90,7 +90,7 @@
                                     </form>
 
 
-                                    <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}/following">Following</a>
+                                    <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}/following"> My Followings</a>
                                     </a>
 
                                     <form id="welcome-form" action="/profile/{{ Auth::user()->id }}/following" method="GET" class="d-none">
@@ -99,7 +99,7 @@
 
 
 
-                                    <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}/followers">Followers</a>
+                                    <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}/followers">My Followers</a>
                                     </a>
 
                                     <form id="welcome-form" action="/profile/{{ Auth::user()->id }}/followers" method="GET" class="d-none">

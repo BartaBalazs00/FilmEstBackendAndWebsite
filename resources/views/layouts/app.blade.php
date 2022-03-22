@@ -19,9 +19,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e320c2c21a.js" crossorigin="anonymous"></script>
-
 </head>
-<body>
+<body onload="myFunction()">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -36,12 +35,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">
+                        <a class="nav-link h2" href="{{ url('/') }}">
                             Movies
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/profile') }}">
+                        <a class="nav-link h2" href="{{ url('/profile') }}">
                             Users
                         </a> 
                     </li>
@@ -57,24 +56,24 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link h2" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link h2" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle h2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     
-                                    <a class="dropdown-item" href="{{ route('profile.show', Auth::user()->id) }}">My account</a>
+                                    <a class="dropdown-item h3" href="{{ route('profile.show', Auth::user()->id) }}">My account</a>
                                     </a>
 
                                     <form id="home-form" action="{{ route('profile.show', Auth::user()->id) }}" method="GET" class="d-none">
@@ -82,7 +81,7 @@
                                     </form>
 
 
-                                    <a class="dropdown-item" href="{{ route('welcome') }}">Movies</a>
+                                    <a class="dropdown-item h3" href="{{ route('welcome') }}">Movies</a>
                                     </a>
 
                                     <form id="welcome-form" action="{{ route('welcome') }}" method="GET" class="d-none">
@@ -90,7 +89,7 @@
                                     </form>
 
 
-                                    <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}/following"> My Followings</a>
+                                    <a class="dropdown-item h3" href="/profile/{{ Auth::user()->id }}/following"> My Followings</a>
                                     </a>
 
                                     <form id="welcome-form" action="/profile/{{ Auth::user()->id }}/following" method="GET" class="d-none">
@@ -99,7 +98,7 @@
 
 
 
-                                    <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}/followers">My Followers</a>
+                                    <a class="dropdown-item  h3" href="/profile/{{ Auth::user()->id }}/followers">My Followers</a>
                                     </a>
 
                                     <form id="welcome-form" action="/profile/{{ Auth::user()->id }}/followers" method="GET" class="d-none">
@@ -107,7 +106,7 @@
                                     </form>
 
 
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item  h3" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -123,10 +122,12 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div id="loader"></div>
+        <div style="display:none;" id="myDiv" class="animate-bottom">
+            <main class="py-4">
+                @yield('content')
+            </main>
+        </div>
     </div>
 </body>
 </html>

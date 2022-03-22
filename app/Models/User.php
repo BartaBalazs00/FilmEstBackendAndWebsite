@@ -23,6 +23,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'username',
         'password',
     ];
+    protected $visible = [
+        'id',
+        'email'
+    ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -52,7 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail
             ]);
         });
     }
-    
+
     public function filmek()
     {
         return $this->belongsToMany(Film::class, "mentettfilmek", "user_id", "film_id")->orderBy('created_at', 'DESC');

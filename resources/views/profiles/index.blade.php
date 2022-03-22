@@ -41,9 +41,15 @@
                     </div>
                     @endforeach
             @else
-                <h1>Has no saved films</h1>
+                <h1>Has no saved films <i class="fas fa-frown"></i></h1>
             @endif
         </div>
     @endforeach
+
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            {{ $users->links('pagination::bootstrap-4') }}
+        </div>
+    </div>
 </div>
 @endsection

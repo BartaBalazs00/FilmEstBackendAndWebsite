@@ -7,9 +7,9 @@
 <script>
     export default {
         props: ["userId", "follows"],
-        mounted() {
-            console.log('Component mounted.')
-        },
+        // mounted() {
+        //     console.log('Component mounted.')
+        // },
         data: function (){
             return {
                 status: this.follows
@@ -20,7 +20,7 @@
                 axios.post('/follow/'+this.userId)
                 .then(response => {
                     this.status = !this.status;
-                    console.log(response.data);
+                    window.location.reload();
                 })
                 .catch(errors => {
                     if (errors.response.status == 401){

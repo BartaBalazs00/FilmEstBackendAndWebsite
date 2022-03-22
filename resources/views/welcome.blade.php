@@ -37,9 +37,7 @@
 
     <div class="row">
         <div class="col-12 d-flex justify-content-center">
-            @if(sizeof($filmek) > 0)
-                {{ $filmek->links('pagination::bootstrap-4') }}
-            @endif
+            {{ $filmek->links('pagination::bootstrap-4') }}
         </div>
     </div>
 

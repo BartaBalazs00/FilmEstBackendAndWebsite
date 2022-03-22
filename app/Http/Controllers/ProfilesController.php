@@ -22,7 +22,7 @@ class ProfilesController extends Controller
     {
         $error = "";
         $search = "";
-        $users = User::all();
+        $users = User::paginate(3);
         return view('profiles.index',[
             'users' => $users,
             'error' => $error,
@@ -32,7 +32,7 @@ class ProfilesController extends Controller
 
     public function indexWithError($error, $search)
     {
-        $users = User::all();
+        $users = User::paginate(3);
         return view('profiles.index',[
             'users' => $users,
             'error' => $error,
@@ -47,7 +47,7 @@ class ProfilesController extends Controller
         if($request->get("search") != ""){
 
             $search = $request->get("search");
-            $users = User::where('username', 'LIKE', '%'.$search.'%')->paginate(5);
+            $users = User::where('username', 'LIKE', '%'.$search.'%')->paginate(3);
             $users->appends($request->all());
 
             if($users->count() > 0){

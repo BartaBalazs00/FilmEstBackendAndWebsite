@@ -20,12 +20,12 @@
                 @endcan
                 <div class="d-flex">
                     <div class="pe-5"><strong>{{$mentettFilmek->count()}}</strong> saved films</div>
-                    <div class="pe-5"><strong>{{$user->profile->followers->count()}}</strong><a href="{{ route('profile.followers', $user->id)}}">followers</a></div>
+                    <div class="pe-5"><strong>{{$user->profile->followers->count()}}</strong><a href="{{ route('profile.followers', $user->id)}}"> followers</a></div>
                     <form id="welcome-form" action="{{ route('profile.followers', $user->id) }}" method="GET" class="d-none">
                         @csrf
                     </form>
 
-                    <div class="pe-5"><strong>{{$user->following->count()}}</strong><a href="{{ route('profile.following', $user->id)}}">following</a></div>
+                    <div class="pe-5"><strong>{{$user->following->count()}}</strong><a href="{{ route('profile.following', $user->id)}}"> following</a></div>
                     <form id="welcome-form" action="{{ route('profile.following', $user->id) }}" method="GET" class="d-none">
                         @csrf
                     </form>
@@ -36,6 +36,25 @@
                 <div class="pt-3 fw-bold"><a href="#"> {{$user->profile->url}}</a></div>
             </div>
         </div>
+        @if(Auth::check())
+            @if(auth()->user()->id === $user->id && $mentettFilmek->count() === 0)
+                <div style='text-align: center'>
+                    <div>
+                        <h1 >You have no saved movies</h1>
+                    </div>
+                    <div class="wh-50%" style="font-size: 300px">
+                        <i class="fas fa-frown"></i>
+                    </div>
+                    <div>
+                        <h2>
+                            <a href="{{ url('/') }}">
+                                Search for movies
+                            </a> 
+                        </h2>
+                    </div>
+                </div>
+            @endif
+        @endif
             <div class="row pt-5">
                 @if ($mentettFilmek->count() > 0)
                     @foreach ( $mentettFilmek as $mentettFilm)

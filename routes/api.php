@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\SzineszController;
 use App\Http\Controllers\Api\FilmKategoria;
 use App\Http\Controllers\Api\FilmRendezo;
 use App\Http\Controllers\Api\FilmSzinesz;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +32,4 @@ Route::resource('/szineszek', SzineszController::class);
 Route::resource('/filmrendezo', FilmRendezo::class);
 Route::resource('/filmszinesz', FilmSzinesz::class);
 Route::resource('/filmkategoria', FilmKategoria::class);
+Route::resource('/felhasznalok', UserController::class);

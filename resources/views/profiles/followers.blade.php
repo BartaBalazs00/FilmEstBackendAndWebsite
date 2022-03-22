@@ -18,7 +18,7 @@
             <h1 style='text-align: center'>Your followers are</h1>
         @else
             <div style='text-align: center'>
-                <h1>Your have no followers</h1>
+                <h1>You have no followers</h1>
                 <div class="wh-50%" style="font-size: 300px">
                     <i class="fas fa-frown"></i>
                 </div>

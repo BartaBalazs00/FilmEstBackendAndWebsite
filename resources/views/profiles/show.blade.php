@@ -7,8 +7,8 @@
             <img src="{{ $user->profile->profileImage()}}" class=" rounded-circle mt-5 height: auto img-fluid">
         </div>
             <div class="col-lg-9 col-sm-6 pt-5">
-                <div class="d-flex align-items-center pb-3 ">
-                    <div class="h4">{{$user->username}}</div>
+                <div class="d-flex align-items-center pb-2 ">
+                    <div class="h1">{{$user->username}}</div>
                     @if(Auth::check())
                         @if(auth()->user()->id != $user->id)
                             <follow-button user-id="{{$user->id}}" follows="{{ $follows }}"></follow-button>
@@ -31,11 +31,12 @@
                     </form>
 
                 </div>
-                <div class="pt-3"><strong>{{$user->profile->cim}}</strong></div>
-                <div class="pt-3">{{$user->profile->leiras}}</div>
-                <div class="pt-3 fw-bold"><a href="#"> {{$user->profile->url}}</a></div>
+                <div class="pt-2 h3"><strong>{{$user->profile->cim}}</strong></div>
+                <div class="pt-2 h3">{{$user->profile->leiras}}</div>
+                <div class="pt-3 fw-bold"><a href="{{$user->profile->url}}" target="blank"> {{$user->profile->url}}</a></div>
             </div>
         </div>
+        <hr>
         @if(Auth::check())
             @if(auth()->user()->id === $user->id && $mentettFilmek->count() === 0)
                 <div style='text-align: center'>
@@ -49,10 +50,26 @@
                         <h2>
                             <a href="{{ url('/') }}">
                                 Search for movies
-                            </a> 
+                            </a>
                         </h2>
                     </div>
                 </div>
+            @endif
+            @if(auth()->user()->id !== $user->id && $mentettFilmek->count() === 0)
+                <div style='text-align: center'>
+                    <div>
+                        <h1 >{{$user->username}} has no saved movies</h1>
+                    </div>
+                    <div class="wh-50%" style="font-size: 300px">
+                        <i class="fas fa-frown"></i>
+                    </div>
+                </div>
+            @endif
+            @if(auth()->user()->id === $user->id && $mentettFilmek->count() > 0)
+                <div style='text-align: center' class="h1">Your saved films are</div>
+            @endif
+            @if(auth()->user()->id !== $user->id && $mentettFilmek->count() > 0)
+                <div style='text-align: center' class="h1">{{$user->username}} saved films are</div>
             @endif
         @endif
             <div class="row pt-5">

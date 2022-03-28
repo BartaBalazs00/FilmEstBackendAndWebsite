@@ -22,7 +22,7 @@
 </head>
 <body onload="myFunction()">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <div><img src="/img/FilmEst.jpg" style="height: 50px" class="pt-1 pe-3"></div>

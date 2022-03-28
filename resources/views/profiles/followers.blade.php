@@ -44,10 +44,10 @@
             </div>
         </div>
         @php $mentettFilmek = $user->getMentettFilmek($user); @endphp
-        <div class="row">
+        <div class="row pb-5">
             @if ($mentettFilmek->count() > 0)
                     @foreach ( $mentettFilmek as $mentettFilm)
-                    <div class="card col-lg-3 col-sm-6 p-2 mx-0">
+                    <div class="card col-lg-3 col-sm-6 m-1 p-2 " style="width:20rem">
                         <a href="/film/{{$mentettFilm->id}}">
                         <div class="card-title">
                             <img src="{{$mentettFilm->imageUrl}}" class="card-img-top" alt="">
@@ -59,11 +59,10 @@
                     </div>
                     @endforeach
             @else
-                <h1>Has no saved films <i class="fas fa-frown"></i></h1>
+                <h1>Has no saved movies <i class="fas fa-frown"></i></h1>
             @endif
         </div>
     @endforeach
 
-    
 </div>
 @endsection

@@ -5,11 +5,11 @@
     <div class="row">
 
         <form action="{{ route('film.search') }}" method="GET">
-            <div class="form-group">
-                <input type="text" class="form-control" name="search" value="{{$search}}" placeholder="Search for film title">
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Search</button>
+            <div class="form-group d-flex justify-content-center pb-3">
+                <div class="form-outline">
+                    <input type="search" id="form1" class="form-control " name="search" value="{{$search}}" placeholder="Search for film title">
+                </div>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
             </div>
         </form>
         @if($error != "")
@@ -17,12 +17,12 @@
         @endif  
     </div>
 
-    <div class="row">
+    <div class="row justify-content-center">
         
 
         @foreach ($filmek as $film)
         
-            <div class="card col-lg-3 col-sm-6 p-2 mx-0">
+            <div class="card col-lg-3 col-sm-6 m-1 p-2 " style="width:20rem">
                 <a href="/film/{{$film->id}}">
                 <div class="card-title">
                     <img src="{{$film->imageUrl}}" class="card-img-top" alt="">
@@ -36,7 +36,7 @@
     </div>
 
     <div class="row">
-        <div class="col-12 d-flex justify-content-center">
+        <div class="col-12 d-flex justify-content-center pagination-lg">
             {{ $filmek->links('pagination::bootstrap-4') }}
         </div>
     </div>

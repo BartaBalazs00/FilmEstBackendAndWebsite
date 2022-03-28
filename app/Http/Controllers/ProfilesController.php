@@ -14,10 +14,10 @@ use Intervention\Image\Facades\Image;
 
 class ProfilesController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $error = "";
@@ -66,9 +66,11 @@ class ProfilesController extends Controller
         return redirect("/profile");
     }
     
-    public function following(User $user)
+    public function following(User $user, Request $request)
     {
         $users = User::find($user->following()->pluck('profiles.user_id'));
+        $users->append($request->all());
+
         return view('profiles.following',[
             'users' => $users,
             'followingUser' => $user

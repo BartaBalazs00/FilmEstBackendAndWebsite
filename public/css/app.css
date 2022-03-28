@@ -6,6 +6,9 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ #profile{
+   background-color: skyblue;
+ }
  #loader {
   position: absolute;
   left: 50%;
@@ -121,13 +124,13 @@
 
 body {
   margin: 0;
-  font-family: var(--bs-body-font-family);
+  font-family: Arial, Helvetica, sans-serif;
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
+  background-color: #61B5D9;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -278,8 +281,8 @@ sup {
 }
 
 a {
-  color: #0d6efd;
-  text-decoration: underline;
+  color: black;
+  text-decoration: none;
 }
 a:hover {
   color: #0a58ca;
@@ -4556,9 +4559,9 @@ textarea.form-control-lg {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: skyblue;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border: 5px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
 .card > hr {

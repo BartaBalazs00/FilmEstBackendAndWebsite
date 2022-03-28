@@ -22,7 +22,7 @@ Route::get('/', [ FilmController::class, 'index' ])->name("welcome");
 Route::get('/profile', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.index');
 
 Route::get('/profile/search-user', [App\Http\Controllers\ProfilesController::class, "search"])->name("user.search");
-Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'show'])->name('profile.show');
+Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'show'])->middleware('verified')->name('profile.show');
 
 Route::get('/profile/{user}/following', [App\Http\Controllers\ProfilesController::class, 'following'])->middleware('verified')->name('profile.following');
 Route::get('/profile/{user}/followers', [App\Http\Controllers\ProfilesController::class, 'followers'])->middleware('verified')->name('profile.followers');

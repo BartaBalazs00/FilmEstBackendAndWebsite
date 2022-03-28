@@ -68,10 +68,9 @@
                     </div>
                 @endforeach
             @else
-                <h1>Has no saved films <i class="fas fa-frown"></i></h1>
+                <h1>Has no saved movies <i class="fas fa-frown"></i></h1>
             @endif
         </div>
     @endforeach
-    
 </div>
 @endsection

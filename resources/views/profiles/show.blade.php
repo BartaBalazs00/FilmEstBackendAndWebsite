@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row p-3" id="profile">
         <div class="col-lg-3 col-sm-6">
-            <img src="{{ $user->profile->profileImage()}}" class=" rounded-circle mt-5 height: auto img-fluid">
+            <img src="{{ $user->profile->profileImage()}}" class=" rounded-circle mt-3 height: auto img-fluid">
         </div>
             <div class="col-lg-9 col-sm-6 pt-5">
                 <div class="d-flex align-items-center pb-2 ">
@@ -16,10 +16,10 @@
                     @endif
                 </div>
                 @can('update', $user->profile)
-                    <div class="pb-3"><a href="/profile/{{$user->id}}/edit">Edit profile</a></div>
+                <Button class="btn btn-primary bg-primary  mb-3"><a style="color: white" href="/profile/{{$user->id}}/edit">Edit profile</a></Button>
                 @endcan
                 <div class="d-flex">
-                    <div class="pe-5"><strong>{{$mentettFilmek->count()}}</strong> saved films</div>
+                    <div class="pe-5"><strong>{{$mentettFilmek->count()}}</strong> saved movies</div>
                     <div class="pe-5"><strong>{{$user->profile->followers->count()}}</strong><a href="{{ route('profile.followers', $user->id)}}"> followers</a></div>
                     <form id="welcome-form" action="{{ route('profile.followers', $user->id) }}" method="GET" class="d-none">
                         @csrf
@@ -66,16 +66,16 @@
                 </div>
             @endif
             @if(auth()->user()->id === $user->id && $mentettFilmek->count() > 0)
-                <div style='text-align: center' class="h1">Your saved films are</div>
+                <div style='text-align: center' class="h1">Your saved movies are</div>
             @endif
             @if(auth()->user()->id !== $user->id && $mentettFilmek->count() > 0)
-                <div style='text-align: center' class="h1">{{$user->username}} saved films are</div>
+                <div style='text-align: center' class="h1">{{$user->username}} saved movies are</div>
             @endif
         @endif
             <div class="row pt-5">
                 @if ($mentettFilmek->count() > 0)
                     @foreach ( $mentettFilmek as $mentettFilm)
-                    <div class="card col-lg-3 col-sm-6 p-2 mx-0">
+                    <div class="card col-lg-3 col-sm-6  m-1 p-2 " style="width:20rem">
                         <a href="/film/{{$mentettFilm->id}}">
                         <div class="card-title">
                             <img src="{{$mentettFilm->imageUrl}}" class="card-img-top" alt="">

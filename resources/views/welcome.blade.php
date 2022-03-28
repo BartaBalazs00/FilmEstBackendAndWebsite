@@ -22,12 +22,15 @@
 
         @foreach ($filmek as $film)
         
-            <div class="card col-lg-3 col-sm-6 m-1 p-2 " style="width:20rem">
+            <div class="card col-lg-3 col-sm-6 m-3 p-2">
                 <a href="/film/{{$film->id}}">
                 <div class="card-title">
                     <img src="{{$film->imageUrl}}" class="card-img-top" alt="">
                 </div>
                 <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <h2 class="fa fa-star checked"></h2><h2>{{ $film->ertekeles }}</h2>
+                    </div>
                     <h1>{{$film->cim}}</h1>
                 </div>
                 </a>

@@ -6,7 +6,7 @@
         <div class="col-lg-6">
             <img src="{{$film->imageUrl}}" class="w-100 img-fluid">
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 pt-3" style="background-color: skyblue">
 
             <label for="cim">Title:</label>
             <h1 class="ps-3" id="cim">{{$film->cim}}</h1>
@@ -18,8 +18,9 @@
             <h2 class="ps-3" id="leiras">{!! $film->leiras !!}</h2>
 
             <label class="pt-4" for="ertekeles">Rate:</label>
-            <h3 class="ps-3">{{$film->ertekeles}}</h3>
-
+            <div class="d-flex">
+                <h2 class="fa fa-star checked ps-3 pe-2"></h2><h3  id="ertekeles">{{$film->ertekeles}}</h3>
+            </div>
             <label class="pt-4" for="kategoriak">Categories:</label>
             <div id="kategoriak" class="d-flex">
                 @foreach ($film->kategoriak as $kategoria)

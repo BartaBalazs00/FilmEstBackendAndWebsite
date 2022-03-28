@@ -56,12 +56,15 @@
         <div class="row">
             @if ($mentettFilmek->count() > 0)
                 @foreach ( $mentettFilmek as $mentettFilm)
-                    <div class="card col-lg-3 col-sm-6 p-2 mx-0">
+                    <div class="card col-lg-3 col-sm-6 m-3 p-2">
                         <a href="/film/{{$mentettFilm->id}}">
                         <div class="card-title">
                             <img src="{{$mentettFilm->imageUrl}}" class="card-img-top" alt="">
                         </div>
                         <div class="card-body">
+                            <div class="d-flex justify-content-center ">
+                                <h2 class="fa fa-star checked"></h2><h2>{{ $mentettFilm->ertekeles }}</h2>
+                            </div>
                             <h1>{{$mentettFilm->cim}}</h1>
                         </div>
                         </a>

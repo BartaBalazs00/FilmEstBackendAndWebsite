@@ -4561,7 +4561,6 @@ textarea.form-control-lg {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  width: 18rem;
   word-wrap: break-word;
   background-color: skyblue;
   background-clip: border-box;
@@ -4569,10 +4568,15 @@ textarea.form-control-lg {
   border-radius: 0.25rem;
   transition: transform 0.2s ease;
 }
-
-.card:hover{
+.image-card {
+  width: 18rem;
+}
+.image-card:hover{
   background-color: black;
   transform: scale(1.1);
+}
+.image-card:hover a{
+  color: white;
 }
 .card > hr {
   margin-right: 0;

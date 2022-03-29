@@ -47,7 +47,7 @@
         <div class="row pb-5">
             @if ($mentettFilmek->count() > 0)
                     @foreach ( $mentettFilmek as $mentettFilm)
-                    <div class="card col-lg-3 col-sm-6 m-3 p-2">
+                    <div class="card col-lg-3 col-sm-6 m-3 p-2 image-card">
                         <a href="/film/{{$mentettFilm->id}}">
                         <div class="card-title">
                             <img src="{{$mentettFilm->imageUrl}}" class="card-img-top" alt="">

@@ -5,7 +5,7 @@
     <div class="row">
 
         <form action="{{ route('film.search') }}" method="GET">
-            <div class="form-group d-flex justify-content-center pb-3">
+            <div class="form-group d-flex justify-content-center mb-5">
                 <div class="form-outline">
                     <input type="search" id="form1" class="form-control " name="search" value="{{$search}}" placeholder="Search for film title">
                 </div>
@@ -22,7 +22,7 @@
 
         @foreach ($filmek as $film)
         
-            <div class="card col-lg-3 col-sm-6 m-3 p-2">
+            <div class="card col-lg-3 col-sm-6 m-3 p-2 image-card">
                 <a href="/film/{{$film->id}}">
                 <div class="card-title">
                     <img src="{{$film->imageUrl}}" class="card-img-top" alt="">

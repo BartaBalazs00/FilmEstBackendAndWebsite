@@ -3,10 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row p-3" id="profile">
-        <div class="col-lg-3 col-sm-6">
+        <div class="col-xl-3 col-md-5 ">
             <img src="{{ $user->profile->profileImage()}}" class=" rounded-circle mt-3 height: auto img-fluid">
         </div>
-            <div class="col-lg-9 col-sm-6 pt-5">
+            <div class="col-xl-9 col-md-7 pt-5">
                 <div class="d-flex align-items-center pb-2 ">
                     <div class="h1">{{$user->username}}</div>
                     @if(Auth::check())
@@ -72,10 +72,10 @@
                 <div style='text-align: center' class="h1">{{$user->username}} saved movies are</div>
             @endif
         @endif
-            <div class="row pt-5">
+            <div class="row pt-5 justify-content-center">
                 @if ($mentettFilmek->count() > 0)
                     @foreach ( $mentettFilmek as $mentettFilm)
-                    <div class="card col-lg-3 col-sm-6 m-3 p-2 image-card">
+                    <div class="card col-lg-3 col-sm-6 m-3 p-2 image-card ">
                         <a href="/film/{{$mentettFilm->id}}">
                         <div class="card-title">
                             <img src="{{$mentettFilm->imageUrl}}" class="card-img-top" alt="">

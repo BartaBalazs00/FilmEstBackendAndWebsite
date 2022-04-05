@@ -39,7 +39,7 @@
     </div>
 
     <div class="row">
-        <div class="col-12 d-flex justify-content-center pagination-lg">
+        <div class="col-12 d-flex justify-content-center pagination-lg link">
             {{ $filmek->links('pagination::bootstrap-4') }}
         </div>
     </div>

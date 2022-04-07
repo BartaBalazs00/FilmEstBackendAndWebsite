@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e320c2c21a.js" crossorigin="anonymous"></script>
 </head>
-<body onload="myFunction()">
+<body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
             <div class="container">

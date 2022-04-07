@@ -30,3 +30,13 @@ Vue.component('follow-button', require('./components/FollowButton.vue').default)
 const app = new Vue({
     el: '#app',
 });
+
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    setTimeout(showPage, 500);
+});
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}

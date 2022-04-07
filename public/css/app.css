@@ -6,62 +6,6 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
- .link{
-   padding-top: 50px;
- }
- .fa-star{
-   color: yellow;
- }
- #profile{
-   background-color: skyblue;
- }
- #loader {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 1;
-  width: 120px;
-  height: 120px;
-  margin: -76px 0 0 -76px;
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-}
-
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Add animation to "page content" */
-.animate-bottom {
-  position: relative;
-  -webkit-animation-name: animatebottom;
-  -webkit-animation-duration: 1s;
-  animation-name: animatebottom;
-  animation-duration: 1s
-}
-
-@-webkit-keyframes animatebottom {
-  from { bottom:-100px; opacity:0 } 
-  to { bottom:0px; opacity:1 }
-}
-
-@keyframes animatebottom { 
-  from{ bottom:-100px; opacity:0 } 
-  to{ bottom:0; opacity:1 }
-}
-
-#myDiv {
-  display: none;
-}
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -130,13 +74,13 @@
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-color: #61B5D9;
+  background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -287,8 +231,8 @@ sup {
 }
 
 a {
-  color: black;
-  text-decoration: none;
+  color: #0d6efd;
+  text-decoration: underline;
 }
 a:hover {
   color: #0a58ca;
@@ -4565,21 +4509,10 @@ textarea.form-control-lg {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: skyblue;
+  background-color: #fff;
   background-clip: border-box;
-  border: 5px solid rgba(0, 0, 0, 0.125);
+  border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-  transition: transform 0.2s ease;
-}
-.image-card {
-  width: 18rem;
-}
-.image-card:hover{
-  background-color: black;
-  transform: scale(1.1);
-}
-.image-card:hover a{
-  color: white;
 }
 .card > hr {
   margin-right: 0;
@@ -4607,7 +4540,6 @@ textarea.form-control-lg {
 .card-body {
   flex: 1 1 auto;
   padding: 1rem 1rem;
-  text-align: center;
 }
 
 .card-title {
@@ -11349,4 +11281,119 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+.link {
+  padding-top: 50px;
+}
+
+.fa-star {
+  color: yellow;
+}
+
+#profile {
+  background-color: skyblue;
+}
+
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes animatebottom {
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0px;
+    opacity: 1;
+  }
+}
+@keyframes animatebottom {
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+#myDiv {
+  display: none;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: skyblue;
+  background-clip: border-box;
+  border: 5px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  transition: transform 0.2s ease;
+}
+
+.image-card {
+  width: 18rem;
+}
+
+.image-card:hover {
+  background-color: black;
+  transform: scale(1.1);
+}
+
+.image-card:hover a {
+  color: white;
+}
+
+.card-body {
+  text-align: center;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #61B5D9;
 }

@@ -19,7 +19,7 @@ Route::post('follow/{user}', [App\Http\Controllers\FollowsController::class, 'st
 
 Route::get('/', [ FilmController::class, 'index' ])->name("welcome");
 
-Route::get('/profile', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.index');
+Route::get('/profile', [App\Http\Controllers\ProfilesController::class, 'index'])->middleware('verified')->name('profile.index');
 
 Route::get('/profile/search-user', [App\Http\Controllers\ProfilesController::class, "search"])->name("user.search");
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'show'])->middleware('verified')->name('profile.show');

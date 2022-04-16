@@ -73,7 +73,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     
-                                    <a class="dropdown-item h3" href="{{ route('profile.show', Auth::user()->id) }}">My account</a>
+                                    <a class="dropdown-item h3" href="{{ route('profile.show', Auth::user()->id) }}">My Account</a>
                                     </a>
 
                                     <form id="home-form" action="{{ route('profile.show', Auth::user()->id) }}" method="GET" class="d-none">

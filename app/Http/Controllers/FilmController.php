@@ -69,27 +69,6 @@ class FilmController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(int $filmId)
-    {
-
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Film  $film
@@ -102,39 +81,6 @@ class FilmController extends Controller
         return view('film', ['film'=> $film]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Film  $film
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Film $film)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Film  $film
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Film $film)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Film  $film
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Film $film)
-    {
-        //
-    }
 
     public function addToFavourites(Film $film) {
         $userId = Auth::user()->id;

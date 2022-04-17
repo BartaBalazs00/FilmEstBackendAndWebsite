@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\FilmKategoria;
 use App\Http\Controllers\Api\FilmRendezo;
 use App\Http\Controllers\Api\FilmSzinesz;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('login', [AuthController::class, 'login']);
 Route::resource('/filmek', FilmController::class);
 Route::resource('/kategoriak', KategoriaController::class);
 Route::resource('/rendezok', RendezoController::class);

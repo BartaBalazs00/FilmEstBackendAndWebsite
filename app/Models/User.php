@@ -25,7 +25,8 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
     protected $visible = [
         'id',
-        'email'
+        'email',
+        'permission'
     ];
 
     /**

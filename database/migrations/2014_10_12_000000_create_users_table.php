@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            //$table->tinyInteger('permission')->default(0); #Ha nulla, akkor sima user, ha 1 akkor pedig admin
+            $table->tinyInteger('permission')->default(0); #Ha nulla, akkor sima user, ha 1 akkor pedig admin
             $table->rememberToken();
             $table->timestamps();
         });

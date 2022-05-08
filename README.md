@@ -22,29 +22,29 @@ composer require anhskohbo/no-captcha
 
 A .env fájl végére be kell írni a következő két sort 
 
-NOCAPTCHA_SECRET=6LfPMJEeAAAAANx4NU6ROAcOY3NzHFlEH8aX30dc 
+NOCAPTCHA_SECRET=
 
-NOCAPTCHA_SITEKEY=6LfPMJEeAAAAAOoms23Hovgr_erRo3bxTwlgLUdl 
+NOCAPTCHA_SITEKEY=
 
 A .env fájlnál mindent ami MAIL_-el kezdődik, ki kell cserélni erre: 
 
-MAIL_MAILER=smtp 
+MAIL_MAILER=
 
-MAIL_MAILER=smtp 
+MAIL_MAILER=
 
-MAIL_HOST=smtp.gmail.com 
+MAIL_HOST=
 
-MAIL_PORT=587 
+MAIL_PORT=
 
-MAIL_USERNAME=barta.balazs00@gmail.com 
+MAIL_USERNAME=
 
-MAIL_PASSWORD=wlfqjzchttkjhumo 
+MAIL_PASSWORD=
 
-MAIL_ENCRYPTION=tls 
+MAIL_ENCRYPTION=
 
-MAIL_FROM_ADDRESS=barta.balazs00@gmail.com 
+MAIL_FROM_ADDRESS=
 
-MAIL_FROM_NAME="${APP_NAME}" 
+MAIL_FROM_NAME=
 
 A fejlesztői szervert az alábbi utasítással indíthatjuk el: 
 
